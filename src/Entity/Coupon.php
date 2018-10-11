@@ -17,13 +17,13 @@ class Coupon
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Commercant", inversedBy="coupons")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Commercant", inversedBy="coupons", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $commercant_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Particulier", inversedBy="coupons")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Particulier", inversedBy="coupons", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $particulier_id;

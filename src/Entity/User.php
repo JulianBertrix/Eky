@@ -52,7 +52,7 @@ class User
     private $user_code;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypeUser", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeUser", inversedBy="users", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $type_user_id;

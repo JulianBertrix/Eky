@@ -27,13 +27,13 @@ class Dechet
     private $quantite;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\TypeDechet", inversedBy="dechets")
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeDechet", inversedBy="dechets", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $type_dechet_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Particulier", inversedBy="dechets")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Particulier", inversedBy="dechets", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $particulier_id;
