@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+{% endblock %}
+
+{% block body %}  
+<br><br>
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <span class="anchor" id="formLogin"></span>
+        <div class="card card-outline-secondary">
+            <div class="card-header">
+                <h3 class="mb-0">Admin</h3>
+            </div>
+            <div class="card-body">
+                <form class="form" role="form" autocomplete="off" id="loginForm" novalidate="" method="POST">
+                    <div class="form-group">
+                        <label for="uname1">Code utilisateur</label>
+                        <input type="text" class="form-control" name="code" id="code" required="" placeholder="Veuillez entrer le code de l'utilisateur">
+                    </div>
+                    <div class="form-group">
+                        <label>Type du déchet</label>
+                        <select type="text" class="form-control" id="type" required="">
+                            <option>Choisissez le type du déchet</option>
+                            {%for type in types%}
+                                <option id="{{type.id}}" value="{{type.id}}">{{type.type}}</option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantité (en gramme)</label>
+                        <input type="number" class="form-control" id="qte" required="" placeholder="Veuillez entrer une quantité (en g)">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Valider</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
