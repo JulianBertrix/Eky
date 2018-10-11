@@ -1,1 +1,24 @@
+.my-nav {
+    background: transparent !important;
+    transition: height .5s, line-height .5s;
+}
+
+.my-img {
+    height: 90px;
+    transition: all .5s;
+}
+
+.my-img-redux{
+    height: 50px;
+    transition: all .5s;
+}
+
+.my-top {
+    padding-top:140px;
+    height:100vh;
+    min-height:400px;
+    background-size:cover;
+    background-image: ;
+}
+
 @import "~bootstrap/scss/bootstrap";
