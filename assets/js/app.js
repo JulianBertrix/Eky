@@ -16,10 +16,10 @@ $(document).ready(function(){
     var scrollTop = 0;
     $(window).scroll(function(){
         scrollTop = $(window).scrollTop();
-        if(scrollTop > 100){
+        if(scrollTop >= 400){
             $('.my-nav').addClass('bg-light');
             $('.my-img').addClass('my-img-redux');
-        } else if (scrollTop < 100){
+        } else if (scrollTop < 400){
             $('.my-nav').removeClass('bg-light');
             $('.my-img').removeClass('my-img-redux');
         }
