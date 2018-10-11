@@ -107,4 +107,52 @@ class Dechet
 
         return $this;
     }
+
+    /*
+     * @param $poid
+     * @param $type
+     * 100 g de dechet animal = 5point ,5g = 1point
+     * 100 g de dechet vegetal = 10points 10g = 1point
+     * cette fonction permet de covertir le pod des dechet en point et de
+     * retourner un tableau associatifs contenant la valeur des points arrondie et du reste des points
+     * dans le cas ou il reste des chiffres après la virgule
+     */
+
+    public function ConvertisseurPoint($poid,$type){
+
+        $tableau = array();
+
+        //si c'est un type vegetal
+        if($type ==="animal"){
+
+            $point = $poid / 20;
+
+            //floor permet de d'arrondir la valeur au plus bas que je convertie en integer, ce qui me donne l'arrodie de m'a valeur
+            $arrondie = floor($point);
+
+            $reste = $point - $arrondie;
+
+                $tableau["point Arondie"] = (int)$arrondie;
+                $tableau["reste"] = $reste;
+
+                return $tableau;
+
+            return $tableau;
+        }
+
+        //si c'est un type animal meme procédé
+        if ($type === "vegetal"){
+
+             $point = $poid / 10;
+
+            $arrondie = (int)floor($point);
+            $reste = $point - $arrondie;
+
+            $tableau["point Arondie"] = $arrondie;
+            $tableau["reste"] = $reste;
+
+            return $tableau;
+        }
+
+    }
 }
