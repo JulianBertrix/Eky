@@ -28,6 +28,11 @@ class TypeDechet
      */
     private $dechets;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $conversion;
+
     public function __construct()
     {
         $this->dechets = new ArrayCollection();
@@ -77,6 +82,18 @@ class TypeDechet
                 $dechet->setTypeDechetId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getConversion(): ?int
+    {
+        return $this->conversion;
+    }
+
+    public function setConversion(int $conversion): self
+    {
+        $this->conversion = $conversion;
 
         return $this;
     }
