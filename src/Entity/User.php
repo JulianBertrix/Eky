@@ -295,9 +295,9 @@ class User implements UserInterface
                 return ['ROLE_COM'];
                 break;
         }
-        return [
-            'ROLE_USER'
-        ];
+//        return [
+//            'ROLE_USER'
+//        ];
     }
 
     public function getUsername()

@@ -43,7 +43,7 @@ class ProfilController extends AbstractController
 
                 //je recupere le poids
 
-                $poid = $value->getQuantiteUtilise();
+                $poid = $value->getQuantite();
 
 
                 //si le type de dechet est de type animal
