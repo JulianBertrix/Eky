@@ -3,10 +3,9 @@
 {% block title %}Hello!{% endblock %}
 
 {% block body %}
-    <div style='height : 90vh;'>
+    <div style='height : 100vh;'>
         <div class="my-top">
             <div class="container">
-                <h3 class="text-center text-white" style='margin-top: 25vh;'>Mon texte</h3>
                 {% for label, messages in app.flashes %}
                     {% for message in messages %}
                         <div class="alert alert-{{ label }}">
@@ -14,10 +13,96 @@
                         </div>
                     {% endfor %}
                 {% endfor %}
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-sm-10">
+                        <h3 class="text-center text-white font-weight-bold my-nav p-3" style='margin-top: 25vh; border-radius: 5px;'>Vous ne savez pas quoi faire de vos bio-déchets, EKY à la solution 100 % écologique.</h3>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <div class=''>
-        <h1>dfjdsfdlsfhdslkg</h1>
+    <div class="container">
+        <div class='row justify-content-center mt-5 pt-5'>
+            <div class="col-lg-4 col-sm-12">
+                <div>
+                    <img class="border border-dark" style="border-radius: 50%;" width="200px;" height="200px;" src="{{ asset('images/acceuil/primeur.jpg') }}" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 mt-4 font-weight-bold">
+                <p class="align-middle" style="font-size: 1.5rem;">Vous êtes particulier ou tenez un  commerce alimentaire, nous vous proposons de gagner de l’argent et d’augmenter votre clientèle tout en valorisant vos déchets alimentaires. </p>
+            </div>
+        </div>
+        <div class="row justify-conten-center mt-5 pt-5">
+            <div class="col-lg-6 col-sm-12">
+                <div class="card" style="height: 500px;">
+                    <img class="card-img-top" src="{{ asset('images/acceuil/supermarché.jpg') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Commerçant,</h5>
+                        <p class="card-text" style="font-size: 1.2rem;">nous venons collecter vos invendus, produits périmés et déchets alimentaires, en transport hippomobile pour être emmené sur un terrain où poules et cochons* seront nourris grâce à ces déchets.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <div class="card" style="height: 500px;">
+                    <img class="card-img-top" src="{{ asset('images/acceuil/particulier.png') }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title font-weight-bold">Particulier,</h5>
+                        <p class="card-text" style="font-size: 1.2rem;">vous nous amenez vos épluchures et reste de repas pour nourrir des lombrics ou alimenter un compost.
+                                En échange du poids de votre contribution, vous cumulez des points transformables en bon de réduction chez les commerçants partenaires.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 pd-5" style="width: 100vw;">
+        <div class="col-lg-6 col-sm-12 p-0">
+            <img src="{{ asset('images/acceuil/boulangerie.jpg') }}" height="400px" width="100%" alt="boulangerie">
+        </div>
+        <div class="col-lg-6 col-sm-12 bg-dark w-100">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <ul class="list-group text-white" style="font-size: 1.2rem; margin-top: 30%;">Particulier, vous contribuez
+                        <li class="list-item-group">à une économie circulaire,</li>
+                        <li class="list-item-group">à l’émergence d’un néo-paysan</li>
+                        <li class="list-item-group">à la reconstitution de nos sols agricole</li>
+                    </ul>
+                    <p class="text-white" style="font-size: 1.2rem;">et surtout …… votre geste vous rapporte.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="width: 100vw;">
+        <div class="col-lg-6 col-sm-12 bg-dark w-100">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <ul class="list-group text-white" style="font-size: 1.2rem; margin-top: 25%;">Commerçant, vous
+                        <li class="list-item-group">évitez le stockage de vos invendus</li>
+                        <li class="list-item-group">réduisez vos poubelles d’ordure ménagère</li>
+                        <li class="list-item-group">réduisez indirectement votre fiscalité en vous exonérant de la TPAG <small>(Taxe Générale sur les Activités Polluantes)</small></li>
+                    </ul>
+                    <p class="text-white" style="font-size: 1.2rem;">et surtout …… en acceptant d’être partenaire, vous augmentez votre clientèle.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-sm-12 p-0">
+            <img src="{{ asset('images/acceuil/boucherie.jpg') }}" height="400px" width="100%" alt="boulangerie">
+        </div>
+    </div>
+    <div class="row" style="width: 100vw;">
+        <div class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{{ asset('images/acceuil/cuisine.jpg') }}" alt="cuisine">
+                    <div class="carousel-caption d-none d-md-block align-middle my-nav text-dark p-3" style='border-radius: 5px;'>
+                        <h5 class="font-weight-bold">Restaurateur, distributeur, vous êtes concernés par la réglementation</h5>
+                        <p>Depuis 2016, la loi du Grenelle II de l’environnement vous impose la collecte sélective avec tri à la source et valorisation organique.
+                                Nous vous proposons une offre globale de prise en charge de vos bio-déchets, qui allie maîtrise des coûts, sécurité sanitaire, respect de la réglementation, lutte contre le gaspillage alimentaire mise en place du don alimentaire et performance environnementale.</p>
+                        <p class="font-weight-bold">En 2025, cette loi sera étendue à tous les producteurs de bio-déchet.</p>
+                        <br>
+                        <p><small>*Pour contrer tout risque sanitaire, les surplus alimentaires donnés aux animaux sont, avec leurs excréments, redirigés vers les usines de méthanisation ou de compostage.</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
