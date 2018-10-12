@@ -31,4 +31,41 @@
     filter: invert(100%);
 }
 
+/* Affichage du message pour les points */
+.messagePoint{
+
+    font-size: 15px;
+    color: white;
+    font-size: large;
+}
+
+.conteneurMessagePoint{
+
+    background-color: #2963ff;
+    padding: 4% 4% 6% 4%;
+    border-radius: 5px;
+}
+
+.conteneurMessagePoint button{
+
+
+    background-color: #2963ff !important;
+    color: white !important;
+    text-align:center !important;
+    padding: 0px !important;
+    border-right: 5px solid #2963ff!important;
+    border-left: 5px solid #2963ff !important;
+    float: right;
+    margin-top: 10px;
+
+
+}
+
+.conteneurMessagePoint button:hover{
+
+    background-color: #153282 !important;
+    border-left-color: #153282 !important;
+    border-right-color: #153282 !important;
+}
+
 @import "~bootstrap/scss/bootstrap";
