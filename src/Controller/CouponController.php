@@ -16,13 +16,13 @@ class CouponController extends AbstractController
     public function index()
     {
         $particuliers = $this->getDoctrine()->getRepository(Particulier::class)->findAll();
-        $commercants = $this->getDoctrine()->getRepository(Commercant::class)->findAll();
+        $commercants = $this->getDoctrine()->getRepository(Commercant::class)->find(random_int(1, 3));
         $coupons = null;
         
         foreach ($particuliers as $particulier){
             if ($particulier->getNombrePoint() >= 100){
                 $coupon = new Coupon();
-                $coupon->setCommercantId(random_int(1, count($commercants)));
+                $coupon->setCommercantId($this->getDoctrine()->getManager()->find(Commercant::class, $commercants->getId()));
                 $coupon->setParticulierId($this->getDoctrine()->getManager()->find(Particulier::class, $particulier->getId()));
                 $coupon->setCodePromo(random_int(1000, 9999));
                 $coupon->setIsUsed(false);

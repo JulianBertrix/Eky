@@ -25,7 +25,7 @@ class ProfilController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
 
-        $totalPoint = 0;
+        $totalPoint = $currentUser->getNombrePoint();
         $totalReste = 0;
         foreach ($dechets as $value)
         {
