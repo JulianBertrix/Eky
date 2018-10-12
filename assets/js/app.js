@@ -33,6 +33,6 @@ $(document).ready(function(){
     var host = "http://"+$(location).attr('host');
     console.log(currentUrl, host);
     if(host+"/register" === currentUrl){
-        $('.my-nav').removeClass('sticky-top');
+        $('.my-nav').removeClass('position-fixed');
     }
 });

@@ -9,7 +9,7 @@
     </head>
     <body>
         {% block navbar %}
-            <nav class="navbar navbar-expand-lg navbar-dark my-nav sticky-top">
+            <nav class="navbar navbar-expand-lg navbar-dark my-nav position-fixed w-100" style="top: 0; z-index: 5500;">
                 <div class="container font-weight-bold">
                     <a class="navbar-brand" href="#">
                         <img class="my-img invert" src="{{ asset('images/logo/logo.png') }}" alt="">
@@ -39,9 +39,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ path('logout') }}">Déconnection</a>
                                 </li>
-                                {% if app.session.get('role') == 3 %}
+                                {% if app.session.get('role') is same as (1) %}
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('admin') }}">Administration</a>
+                                    <a class="nav-link" href="#">Administration</a>
                                 </li>
                                 {% endif %}
                             {% endif %}
