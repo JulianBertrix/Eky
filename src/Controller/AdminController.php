@@ -14,7 +14,7 @@ class AdminController extends AbstractController
     public function index()
     {
         $types = $this->getDoctrine()->getRepository(TypeDechet::class)->findAll();
-        
+        dump($types);
         return $this->render('admin/index.html.twig', [
             'types' => $types,
         ]);

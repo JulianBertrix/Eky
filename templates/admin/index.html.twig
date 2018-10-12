@@ -1,22 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="build/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 {% endblock %}
 
 {% block body %}  
-<br><br>
 <div class="row">
     <div class="col-md-6 offset-md-3">
         <span class="anchor" id="formLogin"></span>
-        <div class="card card-outline-secondary">
+        <div class="card card-outline-secondary" id="form">
             <div class="card-header">
                 <h3 class="mb-0">Admin</h3>
             </div>
             <div class="card-body">
-                <form class="form" role="form" autocomplete="off" id="loginForm" novalidate="" method="POST">
+                <form class="form" role="form" autocomplete="off" id="adminForm" method="POST">
                     <div class="form-group">
-                        <label for="uname1">Code utilisateur</label>
+                        <label>Code utilisateur</label>
                         <input type="text" class="form-control" name="code" id="code" required="" placeholder="Veuillez entrer le code de l'utilisateur">
                     </div>
                     <div class="form-group">
@@ -32,10 +33,66 @@
                         <label>Quantité (en gramme)</label>
                         <input type="number" class="form-control" id="qte" required="" placeholder="Veuillez entrer une quantité (en g)">
                     </div>
-                    <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Valider</button>
+                    <button type="submit" class="btn btn-success btn-lg float-right" onclick="createDechet(event)">Valider</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+function getFormulaire(data){
+    console.log(data.data);
+    
+    $("#form").empty();
+    $("#form").append($("<div>").addClass("card-header").append($("<h3>").addClass("mb-0").text("Admin")))
+              .append($("<div>").addClass("card-body")
+                .append($("<form>").addClass("form").attr("role", "form").attr("autocomplete", "off").attr("id", "adminForm").attr("method", "POST")
+                    .append($("<div>").addClass("form-group")
+                        .append($("<label>").text("Code utilisateur"))
+                        .append($("<input>").addClass("form-control").attr("type", "text").attr("name", "code").attr("id", "code").attr("require", "").attr("placeholder", "Veuillez entrer le code de l'utilisateur")))
+                    .append($("<div>").addClass("form-group")
+                        .append($("<label>").text("Type du déchet"))
+                        .append($("<select>").addClass("form-control").attr("type", "text").attr("id", "type").attr("require", "")
+                            .append($("<option>").text("Choisissez le type du déchet"))))));
+    
+    for (var i in data.typeDechets){
+        var type = data.typeDechets[i];
+        $("#type").append($("<option>").attr("id", type.id).val(type.id).text(type.type));
+    }
+    
+    $("#adminForm").append($("<div>").addClass("form-group")
+                        .append($("<label>").text("Quantité (en gramme)"))
+                        .append($("<input>").addClass("form-control").attr("id", "qte").attr("type", "number").attr("require", "").attr("placeholder", "Veuillez entrer une quantité (en g)")))
+                   .append($("<button>").addClass("btn btn-success btn-lg float-right").attr("onclick", "createDechet(event)").text("Valider"));
+}
+
+window.createDechet = function(e){
+    e.preventDefault();
+    console.log($("#code").val());
+    console.log($("#type").val());
+    console.log($("#qte").val());
+    $.ajax({
+        url: "http://eky.bwb/api/formulaire/dechet/add",
+        type: "POST",
+
+        data: {
+            user: $("#code").val(),
+            type: $("#type").val(),
+            qte: $("#qte").val()
+        },
+
+        success: function (data) {
+            alert("validation effectuée avec succés")
+            getFormulaire(data);
+        },
+        error: function () {
+        }
+    });
+};
+</script>
 {% endblock %}
+
+{#{% block javascripts %}
+    <script src="build/app.js"></script>
+    <script scr="{{asset('build/adminFormRequest.js')}}"></script>
+{% endblock %}#}
