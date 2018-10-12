@@ -17,7 +17,6 @@ class CouponController extends AbstractController
     {
         $particuliers = $this->getDoctrine()->getRepository(Particulier::class)->findAll();
         $commercants = $this->getDoctrine()->getRepository(Commercant::class)->find(random_int(1, 3));
-        $coupons = null;
         
         foreach ($particuliers as $particulier){
             if ($particulier->getNombrePoint() >= 100){
@@ -31,16 +30,14 @@ class CouponController extends AbstractController
                 $particulier->setNombrePoint($particulier->getNombrePoint() - 100);
                 $this->getDoctrine()->getManager()->merge($particulier);
                 
-                $this->getDoctrine()->getManager()->flush();
-                
-                $coupons = $this->getDoctrine()->getRepository(Coupon::class)->findAll();
+                $this->getDoctrine()->getManager()->flush();               
             }
         }
         
+        $coupons = $this->getDoctrine()->getRepository(Coupon::class)->findAll();
+        
         return $this->render('coupon/index.html.twig', [
             'coupons' => $coupons,
-            'particuliers' => $particuliers,
-            'commercants' => $commercants,
         ]);
     }
 }
