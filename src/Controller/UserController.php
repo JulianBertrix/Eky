@@ -122,7 +122,12 @@ class UserController extends AbstractController
             $entityManager->persist($com);
             $entityManager->flush();
 
-            //return $this->redirectToRoute('login');
+            $this->addFlash(
+                'success',
+                'Inscription terminé, vous pouvez vous connecter'
+            );
+
+            return $this->redirectToRoute('login');
             
         }
     
