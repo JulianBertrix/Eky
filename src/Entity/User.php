@@ -284,14 +284,14 @@ class User implements UserInterface
     public function getRoles()
     {
         $role = $this->type_user_id;
-        switch($role){
-            case '1':
+        switch($role->getId()){
+            case 1:
                 return ['ROLE_ADMIN'];
                 break;
-            case '2':
+            case 2:
                 return ['ROLE_USER'];
                 break;
-            case '3':
+            case 3:
                 return ['ROLE_COM'];
                 break;
         }

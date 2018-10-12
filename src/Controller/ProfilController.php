@@ -33,7 +33,7 @@ class ProfilController extends AbstractController
             //si l'id de l'uttilisateur correspondont à ma clé etrangère de ma table dechet
             // alors se sont les bon dechet
 
-            if ($curentId === $value->getParticulierId()->getId()) {
+            if ($curentId === $value->getParticulierId()->getId() ) {
 
                 //je recupere le type
                 $typeDechet = $value->getTypeDechetId()->getType();
@@ -80,7 +80,7 @@ class ProfilController extends AbstractController
                     $value->setQuantite($resteGramme);
 
                     //je sauvegarde mon entité en db
-                    $entityManager->merge($value);
+                    $entityManager->persist($value);
                     $entityManager->flush();
 
                 }
@@ -96,7 +96,7 @@ class ProfilController extends AbstractController
                     $value->setQuantite($resteGramme);
 
                     //je sauvegarde mon entité en db
-                    $entityManager->merge($value);
+                    $entityManager->persist($value);
                     $entityManager->flush();
 
                     //si j'arrive a faire un point avec ce qu'il me reste alors je le rajoute a mon total de point
@@ -121,7 +121,7 @@ class ProfilController extends AbstractController
 
         $currentUser->setNombrePoint($totalPoint);
 
-        $entityManager->merge($currentUser);
+        $entityManager->persist($currentUser);
         $entityManager->flush();
 
         return $this->render('profil/index.html.twig', [
