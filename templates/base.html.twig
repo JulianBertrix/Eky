@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="build/app.css">
+            <link rel="stylesheet" href="{{ asset('build/app.css') }}">
         {% endblock %}
     </head>
     <body>
@@ -12,7 +12,7 @@
             <nav class="navbar navbar-expand-lg navbar-dark my-nav sticky-top">
                 <div class="container font-weight-bold">
                     <a class="navbar-brand" href="#">
-                        <img class="my-img invert" src="images/logo/logo.png" alt="">
+                        <img class="my-img invert" src="{{ asset('images/logo/logo.png') }}" alt="">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="{{ path('home') }}">Home <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Menu 1</a>
@@ -28,9 +28,23 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Menu 2</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login">Inscription/Connexion</a>
-                            </li>
+                            {% if app.session.get('role') is null %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('register') }}">Inscription/Connexion</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Mon profil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('logout') }}">Déconnection</a>
+                                </li>
+                                {% if app.session.get('role') == 3 %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('admin') }}">Administration</a>
+                                </li>
+                                {% endif %}
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -38,8 +52,7 @@
         {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}
-            <script src="build/app.js"></script>
-            <script type="text/javascript" scr="{{asset('build/adminFormRequest.js')}}"></script>
+            <script src="{{ asset('build/app.js') }}"></script>
         {% endblock %}
         
     </body>

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-sm-12">
+                <h3 class="font-weight-bold">Formulaire d'inscription</h3>
+                <div class="card shadow">
+                    <div class="card-body">
+                        {% for label, messages in app.flashes %}
+                            {% for message in messages %}
+                                <div class="alert alert-{{ label }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <h3 class="font-weight-bold">Déjà client ?</h3>
+                <div class="card shadow">
+                    <div class="card-body">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <form action="{{ path('login') }}" method="post">
+                            <div class="form-group">
+                                <label for="username">Email</label>
+                                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Mot de passe</label>
+                                <input class="form-control" type="password" id="password" name="_password" />
+                            </div>
+                            <input type="hidden" name="_failure_path" value="{{ path('register') }}" />
+                            <input type="hidden" name="_target_path" value="{{ path('success') }}" />
+                        
+                            <button class="btn btn-primary w-100" type="submit">Se connecter</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,5 +1,9 @@
+html, body {
+    height: 100%;
+}
+
 .my-nav {
-    background: transparent !important;
+    background-color: rgba($color: #000000, $alpha: 0.4) !important;
     transition: height .5s, line-height .5s;
 }
 
@@ -22,7 +26,7 @@
     min-height:100vh;
     background-position: center;
     background-size:cover;
-    background-image: url('../images/background/oeil-2-back.jpg');
+    background-image: url('../images/background/oeil-back.jpg');
     height:calc(90% - 50px);
     height: 90vh;
 }
@@ -31,41 +35,12 @@
     filter: invert(100%);
 }
 
-/* Affichage du message pour les points */
-.messagePoint{
-
-    font-size: 15px;
-    color: white;
-    font-size: large;
-}
-
-.conteneurMessagePoint{
-
-    background-color: #2963ff;
-    padding: 4% 4% 6% 4%;
-    border-radius: 5px;
-}
-
-.conteneurMessagePoint button{
-
-
-    background-color: #2963ff !important;
-    color: white !important;
-    text-align:center !important;
-    padding: 0px !important;
-    border-right: 5px solid #2963ff!important;
-    border-left: 5px solid #2963ff !important;
-    float: right;
-    margin-top: 10px;
-
-
-}
-
-.conteneurMessagePoint button:hover{
-
-    background-color: #153282 !important;
-    border-left-color: #153282 !important;
-    border-right-color: #153282 !important;
+.my-middle {
+    position: relative;
+    top: 40%;
+    -webkit-transform: translateY(-40%);
+    -ms-transform: translateY(-40%);
+    transform: translateY(-40%);
 }
 
 @import "~bootstrap/scss/bootstrap";

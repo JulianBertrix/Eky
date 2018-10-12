@@ -18,13 +18,23 @@ $(document).ready(function(){
         scrollTop = $(window).scrollTop();
         if(scrollTop >= 400){
             $('.my-nav').addClass('bg-light');
+            $('.my-nav').addClass('navbar-light').removeClass('navbar-dark');
             $('.my-img').addClass('my-img-redux');
+            $('.my-img').removeClass('invert');
         } else if (scrollTop < 400){
+            $('.my-img').addClass('invert');
+            $('.my-nav').addClass('navbar-dark').removeClass('navbar-light');
             $('.my-nav').removeClass('bg-light');
             $('.my-img').removeClass('my-img-redux');
         }
     });
 
+    var currentUrl = $(location).attr('href');
+    var host = "http://"+$(location).attr('host');
+    console.log(currentUrl, host);
+    if(host+"/register" === currentUrl){
+        $('.my-nav').removeClass('sticky-top');
+    }
 });
 
 
