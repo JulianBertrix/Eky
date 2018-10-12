@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}S'inscrire{% endblock %}
+
+{% block body %}
+    <div class="container mt-3" style='height: 80vh;'>
+        <div class="row justify-content-center h-100">
+            <div class="col-lg-8 col-sm-12 h-100">
+                <h3 class="font-weight-bold">Formulaire d'inscription</h3>
+                <div class="card my-middle">
+                    <h4 class="font-weight-bold p-3">Je suis :</h4>
+                    <div class="card-body text-center d-flex">
+                        <div class="col-lg-6 w-100">
+                            <a href="{{ path('particulier') }}" class="btn btn-primary w-100"><h5 class='font-weight-bold'>Un particulier</h5></a>
+                        </div>
+                        <div class="col-lg-6 w-100">
+                            <a href="{{ path('commercant') }}" class="btn btn-primary w-100"><h5 class='font-weight-bold'>Un commerçant</h5></a>                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
