@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Particulier;
 use App\Entity\Commercant;
 use App\Entity\TypeUser;
 use App\Form\ParticulierType;
@@ -59,6 +60,12 @@ class UserController extends AbstractController
             dump($user->getIsPro());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
+            
+            $particulier = new Particulier();
+            $particulier->SetUserId($user);
+            $particulier->SetNombrePoint(0);
+            $entityManager->persist($particulier);
+            
             $entityManager->flush();
 
             $this->addFlash(

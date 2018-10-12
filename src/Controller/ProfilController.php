@@ -3,20 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Dechet;
-use App\Entity\User;
+use App\Entity\Particulier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProfilController extends AbstractController
 {
     /**
-     * @Route("/profil", name="profil")
+     * @Route("/profil/{id}", name="profil")
      */
-    public function index()
+    public function index($id)
     {
-
         //je récupère l'uttilisateur courant (à remplacer)
-        $currentUser = $this->getDoctrine()->getRepository(User::class)->find(2);
+        $currentUser = $this->getDoctrine()->getRepository(Particulier::class)->findOneBy(["user_id"=>$id]);
 
         //je stocke son ID
         $curentId = $currentUser->getId();
@@ -81,7 +80,7 @@ class ProfilController extends AbstractController
                     $value->setQuantite($resteGramme);
 
                     //je sauvegarde mon entité en db
-                    $entityManager->persist($value);
+                    $entityManager->merge($value);
                     $entityManager->flush();
 
                 }
@@ -97,15 +96,13 @@ class ProfilController extends AbstractController
                     $value->setQuantite($resteGramme);
 
                     //je sauvegarde mon entité en db
-                    $entityManager->persist($value);
+                    $entityManager->merge($value);
                     $entityManager->flush();
 
-                        //si j'arrive a faire un point avec ce qu'il me reste alors je le rajoute a mon total de point
+                    //si j'arrive a faire un point avec ce qu'il me reste alors je le rajoute a mon total de point
                     if ($totalReste >= 1)
                     {
-
                         $totalPoint += floor($totalReste);
-
                     }
 
                     $totalPoint += $pointArrondie;
@@ -122,9 +119,9 @@ class ProfilController extends AbstractController
         // je peut ajouter un point suplémentaire à mon total des points
 
 
-        $currentUser->getParticulier()->setNombrePoint($totalPoint);
+        $currentUser->setNombrePoint($totalPoint);
 
-        $entityManager->persist($currentUser);
+        $entityManager->merge($currentUser);
         $entityManager->flush();
 
         return $this->render('profil/index.html.twig', [
