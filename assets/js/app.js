@@ -26,3 +26,26 @@ $(document).ready(function(){
     });
 
 });
+
+
+//fontion d'affichage pour les point de la page profil
+//au click declenche la fonction
+$('#buttonMessagePoint').click(
+
+
+
+    //fonction qui permet de cacher le nombre de point dans la page de profils
+    function messageHidden() {
+
+        var div = $('.conteneurMessagePoint');
+
+        div.slideUp(800);
+
+
+    }
+
+
+);
+
+
+
